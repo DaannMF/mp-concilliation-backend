@@ -30,6 +30,8 @@ func (repository Repository) GetPayment(ctx context.Context, paymentID int64) (*
 	restResponse, err := client.Do(request)
 
 	if err != nil {
+		tags := logger.Tags{"resource": constants.Payment, "payment_id": paymentID}
+		logger.Error(ctx, errors.ErrorGettingResource.GetMessage(), tags)
 		return nil, err
 	}
 
