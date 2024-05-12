@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	port = ":8080"
+	defaultPort = ":8080"
 )
 
 func Start() {
@@ -35,6 +35,11 @@ func Start() {
 	handlers := dependencies.Start()
 
 	configureMappings(router, handlers)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = defaultPort
+	}
 
 	err := router.Run(port)
 	if err != nil {
