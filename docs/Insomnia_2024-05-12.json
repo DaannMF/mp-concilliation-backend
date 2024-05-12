@@ -1,0 +1,245 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2024-05-12T19:39:56.861Z",
+    "__export_source": "insomnia.desktop.app:v9.1.1",
+    "resources": [
+        {
+            "_id": "req_3cccb6d1770c4b1aa4f58b2e85c74fbe",
+            "parentId": "fld_b3063d8feac94af7a7d3b37c3ebc285d",
+            "modified": 1715542721497,
+            "created": 1715464269618,
+            "url": "https://lvfd77pf-8080.brs.devtunnels.ms/internal/concilliation/search",
+            "name": "Search",
+            "description": "",
+            "method": "GET",
+            "body": {
+                "mimeType": "application/json",
+                "text": ""
+            },
+            "preRequestScript": "",
+            "parameters": [
+                {
+                    "id": "pair_dce60f42c86f4d6cbbf1144e0abe74aa",
+                    "name": "status",
+                    "value": "PENDING",
+                    "description": "",
+                    "disabled": false
+                }
+            ],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.0.0"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTU2MjY1MTEsImlkIjoxfQ.aPFNi1gY3d56DfunItjjBjPxPKvMsBQBeXmLvmXG-J8"
+            },
+            "metaSortKey": -1715464260296,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_b3063d8feac94af7a7d3b37c3ebc285d",
+            "parentId": "wrk_9d3a760a884a40daab1673a3160240d6",
+            "modified": 1715464245016,
+            "created": 1715464245016,
+            "name": "Mp Concilliation",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1715464245016,
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_9d3a760a884a40daab1673a3160240d6",
+            "parentId": null,
+            "modified": 1714349712587,
+            "created": 1714349712587,
+            "name": "Mercado Pago",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_06a3af9c0c9e4adaa71e034d681db69a",
+            "parentId": "fld_b3063d8feac94af7a7d3b37c3ebc285d",
+            "modified": 1715542510596,
+            "created": 1715487783418,
+            "url": "https://lvfd77pf-8080.brs.devtunnels.ms/internal/concilliation/:payment_id/save",
+            "name": "Concilliate",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": ""
+            },
+            "preRequestScript": "",
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.0.0"
+                }
+            ],
+            "authentication": {
+                "type": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTU2MjY1MTEsImlkIjoxfQ.aPFNi1gY3d56DfunItjjBjPxPKvMsBQBeXmLvmXG-J8"
+            },
+            "metaSortKey": -1715464260246,
+            "isPrivate": false,
+            "pathParameters": [
+                {
+                    "name": "payment_id",
+                    "value": "77041553685"
+                }
+            ],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_91565b9f182c45b4922446fd3ce72f33",
+            "parentId": "fld_b3063d8feac94af7a7d3b37c3ebc285d",
+            "modified": 1715464785037,
+            "created": 1714349743118,
+            "url": "https://lvfd77pf-8080.brs.devtunnels.ms/consumers/payments/news?",
+            "name": "Payments News",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": ""
+            },
+            "preRequestScript": "",
+            "parameters": [
+                {
+                    "id": "pair_f77fda1a5cc14ac2a4cd5f2553aff56d",
+                    "name": "id",
+                    "value": "77041589489",
+                    "description": ""
+                },
+                {
+                    "id": "pair_e47ef3991e394a3c80ec5460a1ec78e9",
+                    "name": "topic",
+                    "value": "payment",
+                    "description": ""
+                }
+            ],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.0.0"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1715464260196,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_bb9d1615e47249e49f6f4cf14a73bc52",
+            "parentId": "fld_b3063d8feac94af7a7d3b37c3ebc285d",
+            "modified": 1715540109247,
+            "created": 1715539998381,
+            "url": "https://lvfd77pf-8080.brs.devtunnels.ms/internal/auth/login",
+            "name": "Login",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"username\" : \"admin\" ,\n\t\"password\" : \"E~rM^FVHHz2)&f#\"\n}"
+            },
+            "preRequestScript": "",
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.0.0"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1715464237977.5,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_37e6a05cbf1bf15aabe06dcc9f196df7f4025db7",
+            "parentId": "wrk_9d3a760a884a40daab1673a3160240d6",
+            "modified": 1714349712588,
+            "created": 1714349712588,
+            "name": "Base Environment",
+            "data": {},
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1714349712588,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_37e6a05cbf1bf15aabe06dcc9f196df7f4025db7",
+            "parentId": "wrk_9d3a760a884a40daab1673a3160240d6",
+            "modified": 1715542549976,
+            "created": 1714349712589,
+            "name": "Default Jar",
+            "cookies": [
+                {
+                    "key": ".Tunnels.Relay.WebForwarding.Cookies",
+                    "value": "CfDJ8E0FHi1JCVNKrny-ARCYWxOaPdRS9bG93HtReoWTeEHRGY8lBuknYnxP0aoMJj_cg55dGhHvkcUQhrQgv7UDUxiFlALUZWkJguviG95emHqdkKBd_RTp6oU4vzLYy2x1XgbAwgqX5DZYf7DSVsJLW5urtMc4OVNMb2Q7iB-MxhPZozB7VyZPlYW5T_iXkNUHTGkQ_ubYGqc0a2dTYGf9Kt8kDWJEAAxTURi3IWETxlFT7wViHhkWy_H1djJkVncpCBXgL2BVzH0w0ehgVdWYCB7FQmLFhXPBrtQqwe-te092LELlb6IkT3TOINidORlh9Og5RvTJ8tWGuX_s3k4qZu2GlJFwtY9K1cn5jifPoyYht1m6Mvk-F0FRb50yUerLIEE3FNMFeQjDpfaE1zMexoqxOl1saXcuqdnHnQ36lR4QB45Y8vMtEfYXeGu5NybTSC0Ngkdu3aC_4SIaEf-ClWuczCEs1__IRM1MiYlVXrGHArMgTfzmT_-mXMEm7T8Frs4xmUYh7_9tA96BbTrSm0NCWRstqrmk6AfmRQrNrgx78b9Igc0X09yZg_xhRJVBTgqKAAyA25izvLNK0aki1IsuWS4p-QMXfD7Eat1Cro_696qXxiqV5D_berKxMkHrl3KACx4ZWQhqqwJbBVEM6G0GHqSjEeo-oOV7uN0l9LYdw-JRL-S_NzYSaltXTe5pPgK7PCabgEm4rBqDCx_clgQXu7X5EyDwloOCZujC-RfVsg-fMezdVUPTcD0rloU0WrCtzKVyDh9_DC7hNlC63379kGlOEYenvS39f6GhIq639slX7pc8fAHzB_zhWL91sl-gFXjN4nqaw9XzETzpve4L0ezONb2D4VAbdRGhXfjbw8DVIFQCfJs5jcHw11oNM25h9ovr4xFikwIZ1xszxVh0sRDAlpH2Y40ViPrk92jv",
+                    "domain": "lvfd77pf-8080.brs.devtunnels.ms",
+                    "path": "/",
+                    "secure": true,
+                    "hostOnly": true,
+                    "creation": "2024-04-29T00:22:08.885Z",
+                    "lastAccessed": "2024-05-12T19:35:49.976Z",
+                    "sameSite": "none",
+                    "id": "9c455a1d-58bb-4754-a1b5-a7e219c57f34"
+                }
+            ],
+            "_type": "cookie_jar"
+        }
+    ]
+}
