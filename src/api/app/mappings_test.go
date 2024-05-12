@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/proethics/mp-conciliation/src/api/config/config_service"
 	"github.com/proethics/mp-conciliation/src/api/config/database"
 	"github.com/proethics/mp-conciliation/src/api/infrastructure/dependencies"
 	"github.com/proethics/mp-conciliation/src/api/utils"
@@ -16,7 +15,6 @@ import (
 func TestUrlMappings(t *testing.T) {
 	// Given
 	_ = os.Setenv("SCOPE", "test")
-	config_service.SetupConfig()
 	router := utils.GetTestRouter()
 	dependencies := dependencies.StartConnection{StoreConnection: new(database.GormConnection)}
 

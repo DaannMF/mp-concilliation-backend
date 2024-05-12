@@ -9,7 +9,6 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/proethics/mp-conciliation/src/api/config/config_service"
 	"github.com/proethics/mp-conciliation/src/api/config/database"
 	"github.com/proethics/mp-conciliation/src/api/core/errors"
 	"github.com/proethics/mp-conciliation/src/api/infrastructure/dependencies"
@@ -21,7 +20,6 @@ const (
 )
 
 func Start() {
-	config_service.SetupConfig()
 	logger.SetupLogger()
 	ctx := context.Background()
 	ctx = context.WithValue(ctx, logger.MpConciliationKey{}, "mp-conciliation")

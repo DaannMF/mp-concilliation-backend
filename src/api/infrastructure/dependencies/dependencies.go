@@ -4,10 +4,8 @@ Package dependencies implements service dependency injection within the applicat
 package dependencies
 
 import (
-	"context"
 	"os"
 
-	"github.com/proethics/mp-conciliation/src/api/config"
 	"github.com/proethics/mp-conciliation/src/api/config/database"
 	"github.com/proethics/mp-conciliation/src/api/core/errors"
 	"github.com/proethics/mp-conciliation/src/api/core/usecases/concilliation"
@@ -17,7 +15,6 @@ import (
 	"github.com/proethics/mp-conciliation/src/api/entrypoints/handlers/api"
 	"github.com/proethics/mp-conciliation/src/api/entrypoints/handlers/consumer"
 	"github.com/proethics/mp-conciliation/src/api/entrypoints/handlers/middlewares"
-	"github.com/proethics/mp-conciliation/src/api/infrastructure/logger"
 	"github.com/proethics/mp-conciliation/src/api/repositories/mercado_pago"
 	"github.com/proethics/mp-conciliation/src/api/repositories/payments"
 	"github.com/proethics/mp-conciliation/src/api/repositories/user"
@@ -40,13 +37,6 @@ func (connections StartConnection) Start() *HandlerContainer {
 	storeClient, err := connections.StoreConnection.Connect()
 	if err != nil {
 		panic(errors.NewDependencyError(errors.ErrorDataBaseConnection.GetMessageWithParams(errors.Parameters{"cause": err.Error()})))
-	}
-
-	// Configuration
-	_, err = config.Load()
-	if err != nil {
-		logger.Error(context.Background(), errors.ErrorCreatingConfigClient.GetMessage(), logger.Tags{})
-		panic(errors.NewDependencyError(errors.ErrorCreatingConfigClient.GetMessageWithParams(errors.Parameters{"cause": err.Error()})))
 	}
 
 	// Repositories
