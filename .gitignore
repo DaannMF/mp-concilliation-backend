@@ -1,0 +1,58 @@
+### Go ###
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+_testmain.go
+
+# Output of the go profiling tool
+*.prof
+
+# Output of the go coverage tool
+*.out
+coverage/*
+
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.iml
+*.orig
+
+# Go generated folders
+_obj
+_test
+vendor
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+# CGO specific files
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+# Common IDE folders
+.idea/
+.vscode/
+_vendor*
+bin/*
+pkg/*
+src/github.com/*
+.DS_Store
+
+# code quality service folders
+code_quality_service/*
+staticcheck.conf
+
+main
+src/api/api
+# docs
+docs/guide/.nojekyll
