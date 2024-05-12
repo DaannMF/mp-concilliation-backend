@@ -20,6 +20,7 @@ const (
 
 type ConnectionData struct {
 	Host           string
+	Port           string
 	Schema         string
 	Username       string
 	Password       string
@@ -40,7 +41,8 @@ func GetConnectionDataBase() *ConnectionData {
 		return connectionData.setupMasterConnectionData()
 	}
 
-	connectionData.Host = "localhost:3306"
+	connectionData.Host = "localhost"
+	connectionData.Port = "3306"
 	connectionData.Schema = "payments"
 	connectionData.Username = "root"
 	connectionData.Password = ""
@@ -50,9 +52,10 @@ func GetConnectionDataBase() *ConnectionData {
 }
 
 func (cd *ConnectionData) setupMasterConnectionData() *ConnectionData {
-	cd.Host = os.Getenv("DB_MYSQL_CREDITSCREDIT02_CREDLINES_CREDLINES_ENDPOINT")
-	cd.Password = os.Getenv("DB_MYSQL_CREDITSCREDIT02_CREDLINES_CREDLINES_WPROD")
-	cd.Username = os.Getenv("DB_MYSQL_CREDITSCREDIT02_CREDLINES_CREDLINES_USERNAME")
+	cd.Host = os.Getenv("MYSQLHOST")
+	cd.Port = os.Getenv("MYSQLPORT")
+	cd.Password = os.Getenv("MYSQLPASSWORD")
+	cd.Username = os.Getenv("MYSQLUSER")
 	cd.Schema = "payments"
 	cd.Dialect = mysqlDialect
 	cd.DialectConnect = mySQLConnect
@@ -71,8 +74,8 @@ func GetConnectionString(cd *ConnectionData) string {
 	if cd.Dialect == sqlLiteDialect {
 		return cd.Host
 	}
-	return fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=true",
-		cd.Username, cd.Password, cd.Host, cd.Schema)
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=true",
+		cd.Username, cd.Password, cd.Host, cd.Port, cd.Schema)
 }
 
 func mySQLConnect(dns string) gorm.Dialector {
