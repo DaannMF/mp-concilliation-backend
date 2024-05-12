@@ -39,7 +39,7 @@ func Start() {
 		port = defaultPort
 	}
 
-	err := router.Run(port)
+	err := router.Run("0.0.0.0:" + port)
 	if err != nil {
 		logger.Error(ctx, errors.ErrorRunningApplication.GetMessage(), logger.Tags{})
 		panic(err)
