@@ -1,4 +1,4 @@
-# Go Starter App
+# MP Concilliation APP
 
 ![technology Go](https://img.shields.io/badge/technology-go-blue.svg)
 
