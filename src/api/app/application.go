@@ -6,6 +6,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -27,6 +28,7 @@ func Start() {
 	logEnvironment(ctx)
 
 	router := gin.Default()
+	router.Use(cors())
 
 	dependencies := dependencies.StartConnection{StoreConnection: new(database.GormConnection)}
 
@@ -43,6 +45,21 @@ func Start() {
 	if err != nil {
 		logger.Error(ctx, errors.ErrorRunningApplication.GetMessage(), logger.Tags{})
 		panic(err)
+	}
+}
+
+func cors() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(http.StatusNoContent)
+			return
+		}
+
+		c.Next()
 	}
 }
 
