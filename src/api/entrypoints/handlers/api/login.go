@@ -28,11 +28,11 @@ func (handler *Login) handle(c *gin.Context) {
 		return
 	}
 
-	token, err := handler.LoginUseCase.Execute(ctx, authInput)
+	user, token, err := handler.LoginUseCase.Execute(ctx, authInput)
 	if err != nil {
 		c.AbortWithError(http.StatusForbidden, err)
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"token": token})
+	c.JSON(http.StatusOK, auth.NewAuthResponse(*user, *token))
 }
