@@ -36,13 +36,13 @@ func (repository Repository) Get(ctx context.Context, id int64) (*entities.Payme
 	return &payment, nil
 }
 
-func (repository Repository) GetPendingPayments(ctx context.Context) ([]entities.Payment, error) {
+func (repository Repository) GetPaymentsByStatus(ctx context.Context, status constants.ConcilliedStatus) ([]entities.Payment, error) {
 	ctx = context.WithValue(ctx, logger.MpConciliationKey{}, "payments_repository")
 
 	var payments []entities.Payment
 	err := repository.StoreClient.Where(&entities.Payment{
-		ConcilliedStatus: constants.ConcilliedPending},
-	).Preload("Payer").Find(&payments).Error
+		ConcilliedStatus: status,
+	}).Preload("Payer").Find(&payments).Error
 
 	if err != nil {
 		tags := logger.Tags{"err": err.Error(), "resource": constants.Payment.String()}
