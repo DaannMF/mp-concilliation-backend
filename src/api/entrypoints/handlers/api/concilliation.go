@@ -51,7 +51,7 @@ func (handler *Concilliation) handle(c *gin.Context) {
 		return
 	}
 
-	err = handler.ConcilliationUseCase.Execute(ctx, payment_id, user.UserName)
+	err = handler.ConcilliationUseCase.Execute(ctx, payment_id, user)
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return

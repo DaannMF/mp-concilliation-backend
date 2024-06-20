@@ -9,6 +9,10 @@ const (
 	RoleUser  UserRole = "USER"
 )
 
-func (status UserRole) String() string {
-	return strings.ToLower(string(status))
+func (role UserRole) String() string {
+	return strings.ToLower(string(role))
+}
+
+func (role UserRole) IsAdmin() bool {
+	return role == RoleAdmin
 }

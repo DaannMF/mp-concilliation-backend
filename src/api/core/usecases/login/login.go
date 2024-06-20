@@ -9,6 +9,7 @@ import (
 	"github.com/golang-jwt/jwt"
 	"github.com/proethics/mp-conciliation/src/api/core/contracts/auth"
 	"github.com/proethics/mp-conciliation/src/api/core/entities"
+	"github.com/proethics/mp-conciliation/src/api/core/entities/constants"
 	"github.com/proethics/mp-conciliation/src/api/core/providers"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -32,8 +33,10 @@ func (useCase *Implementation) Execute(ctx context.Context, request auth.Request
 	}
 
 	generateToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"id":  user.ID,
-		"exp": time.Now().Add(time.Hour * 24).Unix(),
+		"id":       user.ID,
+		"username": user.UserName,
+		"admin":    user.UserRole == constants.RoleAdmin,
+		"exp":      time.Now().Add(time.Hour * 24).Unix(),
 	})
 
 	token, err := generateToken.SignedString([]byte(os.Getenv("SECRET")))

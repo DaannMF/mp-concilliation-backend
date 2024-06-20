@@ -112,9 +112,14 @@ func (repository Repository) Update(ctx context.Context, payment *entities.Payme
 		return errorsMessages.NewRepositoryError(errorsMessages.ErrorBeginTransaction.GetMessage())
 	}
 
+	newStatus := constants.Concillied
+	if payment.ConcilliedStatus == constants.Concillied {
+		newStatus = constants.ConcilliedPending
+	}
+
 	now := time.Now()
 	err = db.Model(&payment).Updates(entities.Payment{
-		ConcilliedStatus: constants.Concillied,
+		ConcilliedStatus: newStatus,
 		ConcilliedDate:   &now,
 		ConcilliedUser:   &userName,
 	}).Error
